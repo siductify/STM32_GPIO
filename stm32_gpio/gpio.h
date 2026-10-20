@@ -11,3 +11,4 @@ typedef enum{
     Output_50Mhz = 0x3;   //the output speed of the driver becomes 50Mhz
 } gpio_mode_t;
 
+//loading...
