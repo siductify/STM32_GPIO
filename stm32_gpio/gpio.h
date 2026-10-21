@@ -35,4 +35,38 @@ typedef enum{
     PD11, PD12, PD13, PD14, PD15;
 } gpio_PD_t;
 
+typedef enum{
+    PE0=0, PE1, PE2, PE3, PE4, PE5,
+    PE6, PE7, PE8, PE9, PE10,
+    PE11, PE12, PE13, PE14, PE15;
+} gpio_PE_t;
+
+typedef enum{
+    PF0=0, PF1, PF2, PF3, PF4, PF5,
+    PF6, PF7, PF8, PF9, PF10,
+    PF11, PF12, PF13, PF14, PF15;
+} gpio_PF_t;
+
+typedef enum{
+    PG0=0, PG1, PG2, PG3, PG4, PG5,
+    PG6, PG7, PG8, PG9, PG10,
+    PG11, PG12, PG13, PG14, PG15;
+} gpio_PG_t;
+
+typedef enum{
+    input_Analog = 0x0<<2;
+    input_Float = 0x1<<2;
+    input_Pullup_Pulldown = 0x3<<2;
+
+    output_PushPull = 0x0<<2;
+    output_OpenDrain = 0x1<<2;
+    output_AFO_PushPull = 0x2<<2;
+    output_AFO_OpenDrain = 0x3<<2;
+} gpio_type_t;
+
+typedef enum{
+    HIGH = 1,
+    LOW = 0;
+} gpio_value_t;
 //loading...
+//
