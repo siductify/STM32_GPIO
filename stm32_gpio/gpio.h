@@ -81,4 +81,20 @@ static inline void GPIO_PullupEnable(GPIO_Typedef *gpio, uint8_t pin){
 static inline void GPIO_PulldownEnable(GPIO_Typedef *gpio, uint8_t pin){
     gpio->ODR &= ~(1<<pin);
 }
+static inline void GPIO_WritePin(GPIO_TypeDef *gpio, uint8_t pin, gpio_value_t value){
+    gpio->ODR = (gpio->ODR &~(1<<pin))|((uint32_t)(!value)<<(pin+16));
+}
+static inline void GPIO_WritePin_Atomic(GPIO_TypeDef *gpio, uint8_t pin, gpio_value_t value){
+    gpio->BSRR = ((uint32_t)value << pin) | ((uint32_t)(!value) << (pin + 16));
+}
+static inline void GPIO_WriterPort(GPIO_TypeDef *gpio, uint16_t value){
+    gpio->ODR = value;
+}
+static inline void GPIO_TogglePin(GPIO_TypeDef *gpio, uint8_t value){
+    gpio->ODR ^= (1<<pin)
+}
+static inline void GPIO_TogglePin_Atomic(GPIO_TypeDef *gpio, uint8_t vlaue){
+    uint32_t mask = (1<<pin);
+    gpio->BSRR = (gpio-> & mask)?(mask<<16):mask;
+}
 //loading...
