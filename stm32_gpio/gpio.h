@@ -68,5 +68,11 @@ typedef enum{
     HIGH = 1,
     LOW = 0;
 } gpio_value_t;
+
+static inline void GPIO_Pinmode(GPIO_typedef *gpio,uint8_t pin, gpio_mode_t mode, gpio_type_t type){
+    uint32 shift = (pin & 0x7u)<<2; //it calculates how many bits to shift a configuartion value so it lands in the correct 4 bit slot for the chosen pin
+    volatile uint32_t *reg= (pin<8u)?&gpio->CRL : &gpio->CHL; //points reg to the correct register based on their pin number
+    uint32_t config = ((uint32_t)mode | (uint32_t)type)<<shift; //combines integer from mode and type and uses <<shift to move those bits into the right positions in the register
+    *reg = (*reg & ~(0xFU << shift)) | config;
+}
 //loading...
-//
