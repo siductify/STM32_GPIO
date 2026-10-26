@@ -109,4 +109,10 @@ static inline void GPIO_ClearPin(GPIO_TypeDef *gpio, uint8_t pin){
 static inline void GPIO_ClearPin_Atomic(GPIO_TypeDef *gpio, uint8_t value){
     gpio->BSRR = (1<<pin);
 }
-//loading...
+static inline void GPIO_ReadPin(GPIO_TypeDef *gpio, uint8_t value){
+    return(gpio->IDR>>pin) & 0x1U;
+}
+static inline void GPIO_ReadPort(GPIO_TypeDef *gpio){
+    return(gpio->IDR&0xFFFF);
+}
+#endif
