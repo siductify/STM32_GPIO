@@ -97,4 +97,16 @@ static inline void GPIO_TogglePin_Atomic(GPIO_TypeDef *gpio, uint8_t vlaue){
     uint32_t mask = (1<<pin);
     gpio->BSRR = (gpio-> & mask)?(mask<<16):mask;
 }
+static inline void GPIO_SetPin(GPIO_TypeDef *gpio, uint8_t pin){
+    gpio->ODR |=(1<<pin)
+}
+static inline void GPIO_SetPin_Atomic(GPIO_TypeDef *gpio, uint8 pin){
+    gpio->BSRR = (1<<pin);
+}
+static inline void GPIO_ClearPin(GPIO_TypeDef *gpio, uint8_t pin){
+    gpio->ODR &=~(1<<pin);
+}
+static inline void GPIO_ClearPin_Atomic(GPIO_TypeDef *gpio, uint8_t value){
+    gpio->BSRR = (1<<pin);
+}
 //loading...
