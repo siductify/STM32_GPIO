@@ -75,4 +75,10 @@ static inline void GPIO_Pinmode(GPIO_typedef *gpio,uint8_t pin, gpio_mode_t mode
     uint32_t config = ((uint32_t)mode | (uint32_t)type)<<shift; //combines integer from mode and type and uses <<shift to move those bits into the right positions in the register
     *reg = (*reg & ~(0xFU << shift)) | config;
 }
+static inline void GPIO_PullupEnable(GPIO_Typedef *gpio, uint8_t pin){
+    gpio->ODR|=(1<<pin);
+}
+static inline void GPIO_PulldownEnable(GPIO_Typedef *gpio, uint8_t pin){
+    gpio->ODR &= ~(1<<pin);
+}
 //loading...
